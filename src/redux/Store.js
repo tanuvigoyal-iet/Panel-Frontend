@@ -1,8 +1,11 @@
-// import { configureStore } from '@reduxjs/toolkit';
-// //import rootReducer from './reducers'; // Make sure this path is correct
+import { configureStore } from '@reduxjs/toolkit';
+import dataReducer from './slice/dataSlice';
 
-// const store = configureStore({
-//   reducer: rootReducer,
-// });
+const store = configureStore({
+  reducer: {
+    data: dataReducer,
+  },
+});
 
-// export default store;
+export default store;
+
