@@ -1,13 +1,13 @@
 import { NavLink } from "react-router-dom";
 
-const Card = ({deptData}) => {
+const RegularCard = ({deptData}) => {
 
   const sectionWiseData = Object.values(
     deptData.reduce((acc, item) => {
       if (!acc[item.section]) {
         acc[item.section] = []; 
       }
-      acc[item.section].push(item);  
+      acc[item.section].push(item);       
       return acc;
     }, {})
   );
@@ -15,6 +15,8 @@ const Card = ({deptData}) => {
   const sortedSectionWiseData = sectionWiseData.sort((a, b) => {
     return a[0].section.localeCompare(b[0].section);
   });
+
+  
   
 
   const sortedData1=sectionWiseData[0].sort((a, b) => a.year - b.year);
@@ -64,4 +66,4 @@ const Card = ({deptData}) => {
   );
 };
 
-export default Card;
+export default RegularCard;

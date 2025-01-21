@@ -1,10 +1,10 @@
 
 import {useEffect,useState} from 'react';
-import Spinner from '../../components/Spinner/Spinner';
-import Card from '../../components/Card/Card';
+import Spinner from '../Spinner/Spinner';
+import RegularCard from '../RegularCard/RegularCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from '../../redux/slice/dataSlice';
-const RegularClassList = () => {
+const RegularCards = () => {
 
   const dispatch = useDispatch();
   const { loading, data, error } = useSelector((state) => state.data);
@@ -15,7 +15,10 @@ const RegularClassList = () => {
   }, [dispatch]);
 
   console.log(data);
-
+  if (!Array.isArray(data)) {
+    console.error('Data is not an array:', data);
+    return null; // or return a fallback UI
+  }
 
   const groupedData = Object.values(
     data.reduce((acc, item) => {
@@ -27,9 +30,11 @@ const RegularClassList = () => {
     }, {})
   );
 
-  console.log(groupedData)
+  console.log(groupedData);
 
   return (
+    <div>
+    
     <div>
     {
         loading?
@@ -42,14 +47,15 @@ const RegularClassList = () => {
         <div>
         {
            groupedData.map((dept,index)=>{
-             return <Card deptData={dept} key={dept.deptId} />
+             return <RegularCard deptData={dept} key={index} />
            }) 
         }
         </div>
         )
     }
     </div>
+    </div>
   );
 };
 
-export default RegularClassList;
+export default RegularCards;
