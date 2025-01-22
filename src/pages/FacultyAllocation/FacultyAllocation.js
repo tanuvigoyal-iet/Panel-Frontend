@@ -1,5 +1,4 @@
 import {useEffect,useState} from 'react';
-
 import Navbar from '../../components/Navbar/Navbar';
 import FilterSession from '../../components/FilterSession/FilterSession';
 import RegularCards from '../../components/RegularCards/RegularCards';
@@ -13,10 +12,9 @@ const FacultyAllocation = () => {
     });
     const handleSelectionChange = (selections) => {
         setSelected(selections); 
-        console.log(selected);
+        console.log(selections);
     };
     
-
   return (
     <div>
     
@@ -34,7 +32,7 @@ const FacultyAllocation = () => {
     </div>
 
     <div>
-        {selected.status === 'Regular' && <RegularCards />}
+        {selected.status === 'Regular' && <RegularCards/>}
         {selected.status === 'Ex' && <ExCards />}
     </div>
 

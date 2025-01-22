@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+import Dropdown from "../Dropdown/Dropdown";
+import { useState } from 'react';
 
 const RegularCard = ({deptData}) => {
 
@@ -16,11 +18,13 @@ const RegularCard = ({deptData}) => {
     return a[0].section.localeCompare(b[0].section);
   });
 
-  
-  
+  // Create an array of all possible sections
+  const sections = sortedSectionWiseData.map((sectionData) => {
+    const sectionName = sectionData[0].section; // Extracts the section (A or B)
+    return sectionName;
+  });
 
-  const sortedData1=sectionWiseData[0].sort((a, b) => a.year - b.year);
-  const sortedData2=sectionWiseData[1].sort((a, b) => a.year - b.year);
+  const [section, setSection] = useState('A');
 
   return (
     <div>
@@ -30,36 +34,11 @@ const RegularCard = ({deptData}) => {
       </div>
 
       <div>
-        <p>SEC A</p>
-        <p>SEC B</p>
-      </div>
-
-      <div>
-        <div>
-          {
-            sortedData1.map((classData) => {
-            return (
-              <NavLink to="/RegularFacultyAllocation">
-                <div key={classData.classId}>
-                  {`${classData.year} year`}
-                </div>
-              </NavLink>
-            );
-          })}
-        </div>
-
-        <div>
-          {
-            sortedData2.map((classData) => {
-            return (
-              <NavLink to="/RegularFacultyAllocation">
-                <div key={classData.classId}>
-                  {`${classData.year} year`}
-                </div>
-              </NavLink>
-            );
-          })}
-        </div> 
+      <Dropdown
+        label="SEC"
+        options={sections}
+        onSelect={(selected) => setSection(selected)}
+      />
       </div>
 
     </div>

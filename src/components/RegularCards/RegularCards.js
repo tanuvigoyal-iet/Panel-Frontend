@@ -15,6 +15,7 @@ const RegularCards = () => {
   }, [dispatch]);
 
   console.log(data);
+
   if (!Array.isArray(data)) {
     console.error('Data is not an array:', data);
     return null; // or return a fallback UI
@@ -47,13 +48,14 @@ const RegularCards = () => {
         <div>
         {
            groupedData.map((dept,index)=>{
-             return <RegularCard deptData={dept} key={index} />
+            return <RegularCard deptData={dept} key={index} />
            }) 
         }
         </div>
         )
     }
     </div>
+
     </div>
   );
 };

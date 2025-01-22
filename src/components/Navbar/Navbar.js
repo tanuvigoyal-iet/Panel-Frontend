@@ -3,9 +3,9 @@ import Dropdown from '../Dropdown/Dropdown';
 
 const Navbar = ({ onSelectionChange }) => {
   const [selections, setSelections] = useState({
-    course: '',
-    courseType: '',
-    status: ''
+    course: 'BE',
+    courseType: 'Full time',
+    status: 'Regular'
   });
 
   const handleSelect = (label, selected) => {
