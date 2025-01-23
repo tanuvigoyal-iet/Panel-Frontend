@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Dropdown from "../Dropdown/Dropdown";
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 
 const RegularCard = ({deptData}) => {
 
@@ -31,8 +31,36 @@ const RegularCard = ({deptData}) => {
     return sec===section && sectionData;
   })
 
-  sectionData.sort((a, b) => a.year - b.year);
-  const flatSectionData = sectionData[0];
+//   sectionData.sort((a, b) => a.year - b.year);
+//   const flatSectionData = sectionData[0];
+
+//   const [colorCounts, setColorCounts] = useState({
+//     red: 0,
+//     yellow: 0,
+//     green: 0
+//   });
+
+//   useEffect(() => {
+//     // Only run if flatSectionData actually changes
+//     if (flatSectionData && flatSectionData.length > 0) {
+//       const counts = flatSectionData.reduce(
+//         (acc, item) => {
+//           if (item.allocationStatus === 0) acc.red++;
+//           if (item.allocationStatus === 1) acc.yellow++;
+//           if (item.allocationStatus === 2) acc.green++;
+//           return acc;
+//         },
+//         { red: 0, yellow: 0, green: 0 }
+//       );
+//       setColorCounts(counts);
+//     }
+//   }, []);
+
+//   console.log("baby")
+
+//   console.log(flatSectionData)
+
+//   console.log("ye lo counts: " + colorCounts);
 
   return (
     <div>
