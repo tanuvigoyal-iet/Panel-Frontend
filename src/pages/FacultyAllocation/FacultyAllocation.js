@@ -6,8 +6,8 @@ import ExCards from '../../components/ExCards/ExCards';
 
 const FacultyAllocation = () => {
     const [selected, setSelected] = useState({
-        course: 'BE',
-        courseType: 'Full time',
+        courseName: 'BE',
+        courseType: 'full time',
         status: 'Regular'
     });
     const handleSelectionChange = (selections) => {
@@ -32,8 +32,8 @@ const FacultyAllocation = () => {
     </div>
 
     <div>
-        {selected.status === 'Regular' && <RegularCards/>}
-        {selected.status === 'Ex' && <ExCards />}
+        {selected.status === 'Regular' && <RegularCards selected={selected} />}
+        {selected.status === 'Ex' && <ExCards selected={selected} />}
     </div>
 
     </div>
