@@ -255,9 +255,27 @@ app.use(cors());
         listOfSubjects: [
           {
             subjectId: "S101",
+            exClassId:"374568",//rasesh
             subjectCode: "DB101",
             subjectName: "Introduction to DBMS",
             className: "DB101 Introduction to DBMS Theory",
+            subjectModeType: 1,
+            allocationStatus: 0
+          },
+          {
+            subjectId: "S101",
+            exClassId:"374568",//rasesh
+            subjectCode: "DB101",
+            subjectName: "Introduction to DBMS",
+            className: "DB101 Introduction to DBMS Theory",
+            subjectCategoryId: 0,
+            allocationStatus: 0
+          },
+          {
+            subjectId: "Z101",
+            subjectCode: "DB801",
+            subjectName: "Introduction to compiler",
+            className: "DB801 Introduction to compiler Theory",
             subjectCategoryId: 1,
             allocationStatus: 0
           }
@@ -521,8 +539,6 @@ app.use(cors());
     ],
   };
   
-  
-     
 // Route to get all students
 app.get('/api/RegularClassList', (req, res) => {
     res.json(RegularClassListData.output);
