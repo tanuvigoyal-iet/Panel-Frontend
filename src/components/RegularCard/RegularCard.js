@@ -34,11 +34,11 @@ const RegularCard = ({deptData,selected}) => {
   sectionData.sort((a, b) => a.year - b.year);
   const flatSectionData = sectionData[0];
 
-  const filteredSectionData = flatSectionData.filter(
+  const filteredSectionData = (flatSectionData || []).filter(
     (item) =>
       (!selected.courseType || item.courseType === selected.courseType) &&
       (!selected.courseName || item.courseName === selected.courseName)
-  );
+  );  
 
   return (
     <div>
@@ -71,8 +71,8 @@ const RegularCard = ({deptData,selected}) => {
            {item.year === 3 && '3rd year'}
            {item.year === 4 && '4th year'}
         </NavLink>
-  </p>
-))}
+        </p>
+      ))}
       </div>
 
     </div>

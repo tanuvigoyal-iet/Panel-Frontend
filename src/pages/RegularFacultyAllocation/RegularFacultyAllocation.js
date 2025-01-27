@@ -12,6 +12,8 @@ const RegularFacultyAllocation = () => {
     dispatch(fetchData(API_URL));
   }, [dispatch]);
 
+  
+
   console.log(data);
    
 

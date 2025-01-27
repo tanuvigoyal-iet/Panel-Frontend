@@ -6,4 +6,4 @@ const ExFacultyAllocation = () => {
     );
   };
   
-  export default ExFacultyAllocation;;
+  export default ExFacultyAllocation;

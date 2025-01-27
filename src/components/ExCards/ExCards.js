@@ -4,7 +4,7 @@ import Spinner from '../Spinner/Spinner';
 import ExCard from '../ExCard/ExCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from '../../redux/slice/dataSlice';
-const ExCards = () => {
+const ExCards = ({selected}) => {
 
   const dispatch = useDispatch();
   const { loading, data, error } = useSelector((state) => state.data);
@@ -14,24 +14,24 @@ const ExCards = () => {
     dispatch(fetchData(API_URL));
   }, [dispatch]);
 
-  console.log(data);
+//   console.log(JSON.stringify(data, null, 2));
 
   if (!Array.isArray(data)) {
     console.error('Data is not an array:', data);
     return null; // or return a fallback UI
   }
 
-  const groupedData = Object.values(
-    data.reduce((acc, item) => {
-      if (!acc[item.year]) {
-        acc[item.year] = [];  
-      }
-      acc[item.year].push(item);  
-      return acc;
-    }, {})
-  );
-  console.log("ex year wise data is here ")
-  console.log(groupedData);
+  const groupedDataByYear = data.reduce((acc, item) => {
+    const yearGroup = acc.find(group => group[0]?.year === item.year);
+    if (yearGroup) {
+      yearGroup.push(item);
+    } else {
+      acc.push([item]);
+    }
+    return acc;
+  }, []);
+  console.log("groupedDataByYear")
+  console.log(groupedDataByYear);
 
   return (
     <div>
@@ -47,8 +47,8 @@ const ExCards = () => {
         (
         <div>
         {
-           groupedData.map((yearData,index)=>{
-            return <ExCard yearData={yearData} key={index} />
+           groupedDataByYear.map((yearData,index)=>{
+            return <ExCard yearData={yearData} key={index} selected={selected} />
            }) 
         }
         </div>
